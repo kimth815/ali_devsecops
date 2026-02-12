@@ -1,6 +1,14 @@
-// test.js 
-function login(password) {
-  if (password === "123456") { // 하드코딩된 비밀번호 취약점 유발
-    console.log("Logged in!");
+let https = require("https");
+
+https.request(
+  {
+    hostname: "secure.my-online-bank.com",
+    port: 443,
+    method: "POST",
+    path: "send-confidential-information",
+    rejectUnauthorized: false // BAD
+  },
+  response => {
+    // ... communicate with secure.my-online-bank.com
   }
-}
+);
